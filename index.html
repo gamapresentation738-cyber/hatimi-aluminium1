@@ -4,6 +4,449 @@
   <meta charset="UTF-8">
   <title>Aluminium Fabrication & Installation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Fonts: Poppins (headings), Roboto (body) -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:700,500,400|Roboto:400,500,700&display=swap" rel="stylesheet">
+  <!-- Feather Icons CDN for product section icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    :root {
+      --primary: #2258a1;
+      --secondary: #2ec5d3;
+      --accent: #43e97b;
+      --shadow: 0 8px 24px rgba(34,88,161,0.11);
+      --radius: 18px;
+    }
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      background: linear-gradient(135deg, #e9f4ff 0%, #dbf6ff 70%);
+      margin:0; padding:0;
+      min-height:100vh;
+      color:#34395d;
+    }
+    header {
+      background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 113%);
+      color: #fff;
+      text-align: center;
+      padding: 32px 0 8px 0;
+      border-bottom-left-radius: var(--radius);
+      border-bottom-right-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    header h1 {
+      font-family: 'Poppins', Arial, sans-serif;
+      font-size: 2.5em;
+      font-weight:700;
+      margin-bottom:6px;
+      letter-spacing:2px;
+      text-shadow: 0 2px 10px #1e3b68a0;
+    }
+    header p {
+      font-size:1.13em;
+      letter-spacing:1px;
+      color:#eafcff;
+    }
+    nav {
+      background: #fff;
+      box-shadow: 0 2px 12px #b4dafc59;
+      display:flex; justify-content:center; gap:0;
+      border-radius:0 0 10px 10px;
+      margin-bottom:22px;
+    }
+    nav a {
+      font-family:'Poppins',Arial,sans-serif;
+      color: var(--primary);
+      font-weight: 500;
+      font-size: 1.06em;
+      padding: 16px 38px;
+      text-decoration: none;
+      border-bottom: 3px solid transparent;
+      transition: background 0.25s, color 0.25s, border-bottom 0.22s;
+      margin:0;
+      border-radius:0;
+      display:block;
+    }
+    nav a.active, nav a:hover {
+      color: var(--accent);
+      background: linear-gradient(90deg, #e9f4ff 30%, #baf3ef 100%);
+      border-bottom: 3px solid var(--accent);
+    }
+    main { min-height:70vh; }
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 38px 42px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      animation: fadePage 0.8s;
+      display:none;
+    }
+    @keyframes fadePage {
+      0% { opacity:0; transform:translateY(30px);}
+      100% { opacity:1; transform:translateY(0);}
+    }
+    .page.active {display:block;}
+    h2 {
+      font-family:'Poppins', Arial,sans-serif;
+      font-size:2em;
+      font-weight:700;
+      letter-spacing:1.2px;
+      color:var(--primary);
+      margin-bottom:22px;
+      text-align:left;
+    }
+    .subheading {
+      font-family:'Poppins',Arial,sans-serif;
+      font-size:1.25em;
+      color:#2ec5d3;
+      margin-bottom:7px;
+    }
+    .center-text { text-align:center;}
+    /* Home Page */
+    .home-hero {
+      display:flex;align-items:center;gap:32px;flex-wrap:wrap;
+    }
+    .home-hero img {
+      width:260px;border-radius:14px;box-shadow:0 8px 32px #dde5ed;
+    }
+    .home-benefits {
+      margin-top:16px;
+      display:flex;gap:26px;flex-wrap:wrap;
+      justify-content:center;
+    }
+    .benefit {
+      flex:1 1 180px;background:linear-gradient(130deg,#eafcff 0%,#e9fbf4 100%);
+      padding:16px 22px;border-radius:14px;text-align:center;
+      box-shadow:0 4px 18px #eff7fa;
+      font-family:'Poppins',Arial,sans-serif;font-weight:500;font-size:1.1em;
+      margin-bottom:8px;
+      transition:transform 0.35s;
+    }
+    .benefit:hover {transform:scale(1.04);}
+    /* Product Page */
+    .products-grid {
+      display:flex;flex-wrap:wrap;gap:38px;justify-content:center;
+      margin-bottom:18px;
+    }
+    .product-card {
+      flex:1 1 240px;
+      background:linear-gradient(145deg,#f7fcfd 80%,#e9f4ff 100%);
+      border-radius:14px;
+      box-shadow: var(--shadow);
+      padding:26px 14px;
+      text-align:center;
+      transition:transform 0.35s;
+      min-width:220px;
+      position:relative;
+      margin-bottom:10px;
+    }
+    .product-card:hover {transform:scale(1.04);}
+    .product-icon {
+      display:inline-block;
+      margin-bottom:9px;
+      color:var(--secondary);
+      font-size:2.4em;
+    }
+    .product-title {
+      font-family:'Poppins',Arial,sans-serif;
+      font-size:1.26em;font-weight:600; color:#2258a1;
+      margin-bottom:8px;
+    }
+    .product-desc {
+      font-size:1.03em;color:#34395d;
+      margin-bottom:9px;
+    }
+    .subparts-box {
+      margin: 7px auto 0 auto;
+      background:#e9f6fb;padding:9px 12px;border-radius:8px;box-shadow:0 2px 9px #dde5ed7a;
+      max-width:160px;
+      font-size:0.98em;color:#2ec5d3;
+      font-family:'Poppins',Arial,sans-serif;
+    }
+    /* Gallery Page */
+    .gallery-grid {
+      display:flex;flex-wrap:wrap;gap:18px;justify-content:center;
+      margin-top:10px;margin-bottom:16px;
+    }
+    .gallery-grid img {
+      width:188px;height:120px;object-fit:cover;border-radius:10px;box-shadow:0 6px 24px #a4dafc77;
+      transition:transform 0.23s, box-shadow 0.22s;
+    }
+    .gallery-grid img:hover {transform:scale(1.07);box-shadow: 0 8px 40px #43e97b66;}
+    /* Pricing Page */
+    form label {display:block;margin-top:16px;margin-bottom:6px;font-weight:500;}
+    form input, form select {
+      padding:13px;width:100%;border:none;border-radius:6px;background:#f7fcfd;
+      font-size:1em;font-family:'Roboto';margin-bottom:16px;
+      box-shadow:0 2px 8px #c3dafc12;
+      border:1.25px solid #c3dafc;
+      transition:border 0.2s;
+    }
+    form input:focus,form select:focus{border:1.6px solid var(--primary);}
+    .subselect-wrap {
+      margin-bottom:15px;
+      display:none;
+      animation:fadeInSubselect 0.45s;
+    }
+    @keyframes fadeInSubselect {
+      0%{opacity:0;transform:translateY(12px);}
+      100%{opacity:1;transform:translateY(0);}
+    }
+    button[type='submit'] {
+      background:linear-gradient(90deg,#2ec5d3 0%,#2258a1 100%);
+      color:#fff;font-weight:700;font-size:1.12em;padding:14px 0;width:100%;
+      border:none;border-radius:8px;box-shadow:0 2px 8px #cfdef3;
+      cursor:pointer;transition:transform 0.21s,box-shadow 0.19s;
+      font-family:'Poppins',Arial,sans-serif;
+    }
+    button[type='submit']:hover {transform:scale(1.04);box-shadow:0 8px 24px #b4dafc;}
+    .result {margin-top:21px;font-size:1.2em;color:#388e3c;text-align:center;}
+    /* Contact */
+    .contact-img {
+      width:160px;margin-bottom:14px;border-radius:10px;box-shadow:0 2px 11px #dde5ed;
+      display:block;margin-left:auto;margin-right:auto;
+    }
+    footer {
+      background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+      color:#fff;text-align:center;padding:18px 0;letter-spacing:1.2px;
+      margin-top:42px;border-radius:0 0 var(--radius) var(--radius);
+      font-family:'Poppins',Arial,sans-serif;font-size:1.03em;
+    }
+    /* Responsive */
+    @media (max-width: 800px) {
+      .page {padding: 14px;}
+      .home-hero {flex-direction:column;justify-content:center;align-items:center;}
+      .products-grid {flex-direction:column;gap:18px;}
+      .gallery-grid {flex-direction:column;gap:11px;}
+      .product-card,.gallery-grid img{width:100%;min-width:0;}
+      nav a {padding:14px 10vw;font-size:1em;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Aluminium Fabrication & Installation</h1>
+    <p>Doors &bull; Windows &bull; Wardrobes &bull; Custom Projects</p>
+  </header>
+  <nav>
+    <a href="#home" class="active">Home</a>
+    <a href="#products">Products</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <main>
+    <!-- Home Page -->
+    <div class="page active" id="page-home">
+      <div class="home-hero">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Aluminium Door">
+        <div>
+          <h2>Welcome</h2>
+          <p style="font-size:1.18em;">
+            Your trusted partner for custom Aluminium Fabrication: doors, windows, wardrobes, partitions, and stunning bespoke interiors/exteriors.<br>
+            <b>Choose your desired quality and get instant pricing.</b>
+          </p>
+          <div class="home-benefits">
+            <div class="benefit">✔ Durability</div>
+            <div class="benefit">✔ Aesthetics</div>
+            <div class="benefit">✔ Precision</div>
+            <div class="benefit">✔ Fast Installation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Products Page -->
+    <div class="page" id="page-products">
+      <h2>Our Products</h2>
+      <div class="products-grid">
+        <div class="product-card">
+          <span class="product-icon" data-feather="sliders"></span>
+          <div class="product-title">Windows</div>
+          <div class="product-desc">Casement, sliding, elegant, custom</div>
+          <div class="subheading">Subtypes:</div>
+          <div class="subparts-box">2 Slides &bull; 3 Slides</div>
+        </div>
+        <div class="product-card">
+          <span class="product-icon" data-feather="log-in"></span>
+          <div class="product-title">Doors</div>
+          <div class="product-desc">Sliding, double, bi-fold, security</div>
+          <div class="subheading">Subtypes:</div>
+          <div class="subparts-box">With Frame &bull; Without Frame</div>
+        </div>
+        <div class="product-card">
+          <span class="product-icon" data-feather="archive"></span>
+          <div class="product-title">Wardrobes</div>
+          <div class="product-desc">Sliding, hinged, custom designer</div>
+        </div>
+        <div class="product-card">
+          <span class="product-icon" data-feather="grid"></span>
+          <div class="product-title">Partitions / Others</div>
+          <div class="product-desc">Partitions, shelves, frames, specialty</div>
+        </div>
+      </div>
+    </div>
+    <!-- Gallery Page -->
+    <div class="page" id="page-gallery">
+      <h2>Gallery</h2>
+      <div class="gallery-grid">
+        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Finished Door">
+        <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=400&q=80" alt="Window Install">
+        <img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=400&q=80" alt="Wardrobe">
+        <img src="https://images.unsplash.com/photo-1533779181778-c71d8b2077b2?auto=format&fit=crop&w=400&q=80" alt="Partition">
+      </div>
+      <div class="center-text" style="margin-top:18px;color:#2258a1;">
+        <small>— Real project photos. Replace images with your own for best impression! —</small>
+      </div>
+    </div>
+    <!-- Pricing Page -->
+    <div class="page" id="page-pricing">
+      <h2>Pricing Calculator</h2>
+      <form id="calculator">
+        <label for="category">Select Product Category:</label>
+        <select id="category" name="category">
+          <option value="door">Door</option>
+          <option value="window">Window</option>
+          <option value="wardrobe">Wardrobe</option>
+          <option value="other">Other</option>
+        </select>
+        <div class="subselect-wrap" id="door-subselect">
+          <label for="door-type">Door Subtype:</label>
+          <select id="door-type" name="door-type">
+            <option value="with-frame">With Frame</option>
+            <option value="without-frame">Without Frame</option>
+          </select>
+        </div>
+        <div class="subselect-wrap" id="window-subselect">
+          <label for="window-type">Window Subtype:</label>
+          <select id="window-type" name="window-type">
+            <option value="2-slides">2 Slides</option>
+            <option value="3-slides">3 Slides</option>
+          </select>
+        </div>
+        <label for="gauge">Select Aluminium Gauge/Quality:</label>
+        <select id="gauge" name="gauge">
+          <option value="standard">Standard (1.2mm)</option>
+          <option value="premium">Premium (1.5mm)</option>
+          <option value="deluxe">Deluxe (2.0mm)</option>
+        </select>
+        <label for="area">Enter Area (in sq.ft):</label>
+        <input type="number" id="area" name="area" min="1" step="any" placeholder="e.g. 20" required>
+        <button type="submit">Calculate Price</button>
+        <div class="result" id="priceResult"></div>
+      </form>
+      <div style="margin-top:16px;text-align:center;">
+        <small>Actual price may vary based on hardware/design; this calculator gives basic material & installation price.</small>
+      </div>
+    </div>
+    <!-- Contact Page -->
+    <div class="page" id="page-contact">
+      <h2>Contact Us</h2>
+      <img class="contact-img" src="https://images.unsplash.com/photo-1503676382389-79a5a3d9b6e1?auto=format&fit=crop&w=300&q=80" alt="Shop Front">
+      <div class="center-text" style="font-size:1.06em;">
+        <p>
+          <b>Email:</b> info@aluminiumfabrication.com<br>
+          <b>Phone:</b> +91-98765-43210<br>
+          <b>Location:</b> 123 Main Street, City Name, State<br>
+          <b>Open:</b> Mon-Sat 9am-7pm
+        </p>
+        <a href="mailto:info@aluminiumfabrication.com" style="background:var(--accent);color:#fff;padding:11px 28px;border-radius:8px;font-family:'Poppins';font-weight:600;text-decoration:none;box-shadow:0 2px 12px #43e97b77;display:inline-block;margin-top:10px;">Email Us</a>
+      </div>
+    </div>
+  </main>
+  <footer>
+    &copy; 2026 Aluminium Fabrication & Installation. All rights reserved.
+  </footer>
+  <script>
+    feather.replace();
+
+    // SPA Navigation
+    const navLinks = document.querySelectorAll('nav a');
+    const pages = document.querySelectorAll('.page');
+    function showPage(hash) {
+      let found = false;
+      pages.forEach(p => {
+        if (hash === '#' + p.id.replace('page-', '')) {
+          p.classList.add('active');
+          found = true;
+        } else {
+          p.classList.remove('active');
+        }
+      });
+      navLinks.forEach(a => {
+        if (a.getAttribute('href') === hash) a.classList.add('active');
+        else a.classList.remove('active');
+      });
+      // Default to home
+      if (!found) {
+        document.getElementById('page-home').classList.add('active');
+        navLinks.forEach(a => a.classList.remove('active'));
+        navLinks[0].classList.add('active');
+      }
+    }
+    window.addEventListener('hashchange', () => showPage(window.location.hash));
+    navLinks.forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        window.location.hash = a.getAttribute('href');
+      });
+    });
+    showPage(window.location.hash);
+
+    // Pricing calculator data
+    const priceMatrix = {
+      door: {
+        with_frame: { standard: 260, premium: 310, deluxe: 380 },
+        without_frame: { standard: 220, premium: 270, deluxe: 340 }
+      },
+      window: {
+        "2-slides": { standard: 200, premium: 260, deluxe: 320 },
+        "3-slides": { standard: 230, premium: 290, deluxe: 350 }
+      },
+      wardrobe: { standard: 210, premium: 275, deluxe: 330 },
+      other: { standard: 180, premium: 230, deluxe: 300 }
+    };
+    // Dynamic Subselect logic
+    const categorySelect = document.getElementById('category');
+    const doorSubselect = document.getElementById('door-subselect');
+    const windowSubselect = document.getElementById('window-subselect');
+    function handleSubselect() {
+      doorSubselect.style.display = (categorySelect.value === 'door') ? 'block' : 'none';
+      windowSubselect.style.display = (categorySelect.value === 'window') ? 'block' : 'none';
+    }
+    categorySelect.addEventListener('change', handleSubselect);
+    handleSubselect();
+
+    document.getElementById('calculator').onsubmit = function(e) {
+      e.preventDefault();
+      const category = categorySelect.value;
+      const gauge = document.getElementById('gauge').value;
+      const area = parseFloat(document.getElementById('area').value);
+      let pricePerSqft, subtype;
+      if (category === 'door') {
+        subtype = document.getElementById('door-type').value;
+        pricePerSqft = priceMatrix.door[subtype][gauge];
+      } else if (category === 'window') {
+        subtype = document.getElementById('window-type').value;
+        pricePerSqft = priceMatrix.window[subtype][gauge];
+      } else {
+        pricePerSqft = priceMatrix[category][gauge];
+      }
+      if (!area || area < 1) {
+        document.getElementById('priceResult').textContent = 'Please enter a valid area.';
+        return;
+      }
+      const total = pricePerSqft * area;
+      document.getElementById('priceResult').textContent =
+        `Estimated Price: ₹${pricePerSqft} per sq.ft × ${area} = ₹${total.toFixed(2)}`;
+    };
+  </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Aluminium Fabrication & Installation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
   <style>
