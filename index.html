@@ -1,6 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlumiFab - Premium Aluminum Fabrication</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <rect x="8" y="8" width="24" height="24" stroke="#2D5016" stroke-width="2" rx="2"/>
+                    <line x1="14" y1="8" x2="14" y2="32" stroke="#A0826D" stroke-width="2"/>
+                    <line x1="26" y1="8" x2="26" y2="32" stroke="#A0826D" stroke-width="2"/>
+                </svg>
+                <span>AlumiFab</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Premium Aluminum <span class="gradient-text">Fabrication Solutions</span></h1>
+            <p class="hero-subtitle">Crafting excellence with precision engineering and modern design</p>
+            <button class="cta-button">Get Started</button>
+        </div>
+        <div class="hero-animation">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Us</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="20" stroke="#2D5016" stroke-width="2"/>
+                            <path d="M18 24L22 28L30 20" stroke="#A0826D" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Quality Assured</h3>
+                    <p>ISO certified processes with rigorous quality control at every stage</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <rect x="8" y="12" width="32" height="24" stroke="#2D5016" stroke-width="2" rx="2"/>
+                            <path d="M12 12V8M36 12V8" stroke="#A0826D" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Fast Delivery</h3>
+                    <p>Quick turnaround times without compromising on quality standards</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="20" stroke="#2D5016" stroke-width="2"/>
+                            <path d="M24 14V24L30 30" stroke="#A0826D" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock customer support for all your fabrication needs</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <path d="M10 24L18 32L38 12" stroke="#2D5016" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Custom Solutions</h3>
+                    <p>Tailored designs for your unique requirements and specifications</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-item" data-category="cutting">
+                    <div class="service-image"></div>
+                    <h3>CNC Cutting</h3>
+                    <p>Precision cutting with advanced CNC machinery for exact dimensions</p>
+                </div>
+
+                <div class="service-item" data-category="welding">
+                    <div class="service-image"></div>
+                    <h3>Welding & Joining</h3>
+                    <p>Expert welding techniques for strong and durable connections</p>
+                </div>
+
+                <div class="service-item" data-category="forming">
+                    <div class="service-image"></div>
+                    <h3>Metal Forming</h3>
+                    <p>Complex forming operations for intricate designs and shapes</p>
+                </div>
+
+                <div class="service-item" data-category="finishing">
+                    <div class="service-image"></div>
+                    <h3>Finishing</h3>
+                    <p>Anodizing, powder coating, and polishing for perfect surfaces</p>
+                </div>
+
+                <div class="service-item" data-category="assembly">
+                    <div class="service-image"></div>
+                    <h3>Assembly</h3>
+                    <p>Complete assembly services with quality control verification</p>
+                </div>
+
+                <div class="service-item" data-category="design">
+                    <div class="service-image"></div>
+                    <h3>Design Consultation</h3>
+                    <p>Expert design guidance to optimize your project specifications</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image"></div>
+                    <div class="project-info">
+                        <h3>Commercial Facades</h3>
+                        <p>Modern aluminum cladding for high-rise commercial buildings</p>
+                        <span class="project-tag">Architecture</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image"></div>
+                    <div class="project-info">
+                        <h3>Industrial Frames</h3>
+                        <p>Structural aluminum frames for manufacturing facilities</p>
+                        <span class="project-tag">Industrial</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image"></div>
+                    <div class="project-info">
+                        <h3>Window Systems</h3>
+                        <p>Custom window and door systems for residential projects</p>
+                        <span class="project-tag">Residential</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About AlumiFab</h2>
+                    <p>With over 20 years of experience in aluminum fabrication, we have established ourselves as industry leaders in precision engineering and innovative solutions.</p>
+                    <p>Our state-of-the-art facility and skilled team ensure that every project meets the highest standards of quality and craftsmanship.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <h4>500+</h4>
+                            <p>Projects Completed</p>
+                        </div>
+                        <div class="stat">
+                            <h4>98%</h4>
+                            <p>Client Satisfaction</p>
+                        </div>
+                        <div class="stat">
+                            <h4>20+</h4>
+                            <p>Years Experience</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-wrapper">
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Project Type" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Tell us about your project" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="contact-info">
+                    <div class="info-item">
+                        <h4>📍 Location</h4>
+                        <p>123 Industrial Park<br>Tech City, TC 12345</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>📞 Phone</h4>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>✉️ Email</h4>
+                        <p>info@alumifab.com</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>🕐 Hours</h4>
+                        <p>Mon - Fri: 9 AM - 6 PM<br>Sat: 10 AM - 4 PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 AlumiFab. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" class="social-link">LinkedIn</a>
+                <a href="#" class="social-link">Twitter</a>
+                <a href="#" class="social-link">Facebook</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8">
   <title id="site-title">Aluminium Fabrication & Installation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
