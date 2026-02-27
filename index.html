@@ -2,6 +2,452 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title id="site-title">Aluminium Fabrication & Installation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Modern Fonts: Inter, DM Sans -->
+  <link href="https://fonts.googleapis.com/css?family=Inter:700,600,400|DM+Sans:400,500&display=swap" rel="stylesheet">
+  <!-- Bootstrap Icons for easy iconography -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    :root {
+      --main-bg: #f7fafd;
+      --card-bg: #ffffff;
+      --primary: #2252d1;
+      --secondary: #ff822e;
+      --accent: #19c2f8;
+      --heading-font: 'Inter', 'DM Sans', Arial, sans-serif;
+      --body-font: 'DM Sans', Arial, sans-serif;
+      --shadow: 0 6px 24px rgba(34,82,209,0.13);
+      --radius: 20px;
+      --transition: all 0.36s cubic-bezier(.39,1.55,.52,1);
+    }
+    /* General */
+    html, body {margin:0;padding:0;font-size:18px;background:var(--main-bg);}
+    body {font-family:var(--body-font);color:#253046;}
+    #site-title {font-family:var(--heading-font);}
+    a {text-decoration:none;}
+    /* Header */
+    header {
+      background: linear-gradient(90deg, #2252d1 0%, #19c2f8 80%);
+      color: #fff; 
+      text-align:center;
+      padding:42px 0 16px;
+      border-bottom-left-radius: var(--radius);
+      border-bottom-right-radius: var(--radius);
+      box-shadow:var(--shadow);
+      animation: fadeDown 0.8s;
+    }
+    @keyframes fadeDown {
+      0%{opacity:0;transform:translateY(-40px);}
+      100%{opacity:1;transform:translateY(0);}
+    }
+    header h1 {font-family:var(--heading-font);font-size:2.7em;font-weight:700;letter-spacing:1.5px;}
+    header p {font-size:1.18em;letter-spacing:.6px;}
+    /* Language Switch */
+    .lang-switch{
+      position:absolute;right:28px;top:36px;
+      background:var(--card-bg);
+      border-radius:16px;
+      box-shadow:0 2px 8px #19c2f866;
+      padding:2px 6px;
+      display:flex;align-items:center;gap:8px;
+      font-family:var(--heading-font);
+      z-index:20;
+    }
+    .lang-btn{
+      background:none;border:none;font-size:1.08em;padding:2px 8px;
+      border-radius:12px;cursor:pointer;color:var(--primary);font-family:inherit;font-weight:600;
+      transition:var(--transition);
+    }
+    .lang-btn.active, .lang-btn:hover{background:var(--accent);color:#fff;}
+    /* Nav */
+    nav {
+      margin:0 auto;width:fit-content;
+      background:#fff;box-shadow:0 3px 18px #b4dafc39;
+      border-radius:16px;display:flex;justify-content:center;gap:12px;
+      margin-top:-17px;margin-bottom:34px;padding:9px 1vw;
+    }
+    nav a {
+      color:var(--primary);
+      font-family:var(--heading-font);
+      font-weight:600;font-size:1.12em;
+      padding:15px 34px;
+      border-radius:14px;
+      border-bottom:3px solid transparent;
+      letter-spacing:.5px;
+      transition:var(--transition);
+      position:relative;
+      z-index:2;
+    }
+    nav a.active, nav a:hover {
+      color:var(--secondary);
+      background:linear-gradient(90deg,#f7fafd 60%,#eafcff 100%);
+      border-bottom:3px solid var(--secondary);
+    }
+    /* Pages */
+    main {min-height:70vh;}
+    .page {
+      max-width:980px;margin:0 auto;background:var(--card-bg);
+      padding:42px 38px;border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      margin-bottom:42px;
+      animation: fadePage 1s;
+      display:none;
+    }
+    @keyframes fadePage {
+      0%{opacity:0;transform:translateY(32px);}
+      100%{opacity:1;transform:translateY(0);}
+    }
+    .page.active {display:block;}
+    h2 {
+      font-family:var(--heading-font);
+      font-size:2em;
+      font-weight:700;color:var(--primary);
+      margin-bottom:22px;text-align:left;
+      letter-spacing:.8px;
+    }
+    .subheading {
+      color:var(--accent);font-size:1.28em;
+      font-family:var(--heading-font);margin-bottom:5px;
+    }
+    /* Home Page */
+    .home-hero {
+      display:flex;align-items:center;gap:38px;flex-wrap:wrap;
+    }
+    .home-hero img {
+      width:260px;border-radius:18px; box-shadow:0 8px 32px #dde5ed;
+    }
+    .home-descr {font-size:1.23em;}
+    .home-benefits {display:flex;gap:20px;flex-wrap:wrap;margin:15px 0;}
+    .benefit {
+      flex:1 1 180px; background:linear-gradient(130deg,#fff 0%,#f7fafd 100%);
+      padding:16px 3vw;border-radius:16px;text-align:center;
+      box-shadow:0 4px 18px #eff7fa;
+      font-family:var(--heading-font);font-weight:500;font-size:1.07em;
+      margin-bottom:8px;
+      transition:var(--transition);cursor:pointer;
+    }
+    .benefit:hover {transform:scale(1.06);}
+    /* Product Page */
+    .products-grid {
+      display:flex;flex-wrap:wrap;gap:38px;justify-content:center;margin-bottom:18px;
+    }
+    .product-card {
+      flex:1 1 240px;
+      background:linear-gradient(100deg,#f7fafd 60%,#fffcf7 100%);
+      border-radius:18px;
+      box-shadow: var(--shadow);
+      padding:32px 24px;
+      text-align:center;
+      transition:var(--transition);
+      min-width:220px;position:relative;
+      margin-bottom:18px;
+      animation:popCard 1s;
+    }
+    @keyframes popCard {0%{transform:scale(.8);}100%{transform:scale(1);}}
+    .product-icon {
+      font-size:2.7em;color:var(--accent);margin-bottom:14px;
+      animation:spinIcon 1.5s linear;
+    }
+    @keyframes spinIcon{from{transform:rotate(0);}to{transform:rotate(360deg);}}
+    .product-title {
+      font-family:var(--heading-font);font-size:1.22em;font-weight:600;margin-bottom:7px;
+      color:var(--primary);
+    }
+    .product-desc {font-size:1.02em;color:#253046;margin-bottom:11px;}
+    .subparts-box{
+      margin:7px auto 0;background:#f7fcff;padding:9px 18px;
+      border-radius:11px;box-shadow:0 2px 9px #dde5ed3a;
+      max-width:180px;font-size:.98em;color:var(--accent);
+      font-family:var(--heading-font);
+    }
+    /* Gallery Page */
+    .gallery-grid{display:flex;flex-wrap:wrap;gap:24px;justify-content:center;margin-top:10px;margin-bottom:16px;}
+    .gallery-grid img {
+      width:188px;height:120px;object-fit:cover;border-radius:13px;box-shadow:0 6px 24px #19c2f888;
+      transition:var(--transition);
+    }
+    .gallery-grid img:hover{transform:scale(1.07) rotate(-2deg);box-shadow:0 8px 40px var(--accent);}
+    /* Pricing Page */
+    form label {display:block;margin-top:16px;margin-bottom:6px;font-weight:500;font-family:var(--heading-font);}
+    form input,form select{
+      padding:14px;width:100%;border:none;border-radius:12px;background:#f7fafd;
+      font-size:1em;font-family:var(--body-font);margin-bottom:16px;
+      box-shadow:0 2px 8px #c3dafc25;border:1.28px solid #dbeffd;
+      transition:var(--transition);
+    }
+    form input:focus,form select:focus{border:1.6px solid var(--primary);}
+    .subselect-wrap{margin-bottom:14px;display:none;animation:fadeInSubselect .45s;}
+    @keyframes fadeInSubselect{0%{opacity:0;transform:translateY(12px);}100%{opacity:1;transform:translateY(0);}}
+    .calc-btn {
+      background:linear-gradient(90deg,var(--secondary) 0%,var(--accent) 100%);
+      color:#fff;font-weight:700;font-size:1.15em;padding:14px 0;width:100%;
+      border:none;border-radius:12px;box-shadow:0 2px 8px #cfdef3;
+      cursor:pointer;transition:var(--transition);font-family:var(--heading-font);
+      position:relative;overflow:hidden;
+    }
+    .calc-btn::before{
+      content:'';
+      position:absolute;top:0;left:0;width:100%;height:100%;
+      background:radial-gradient(circle,#fff4 10%,transparent 60%);opacity:0;
+      transition:opacity .2s;
+    }
+    .calc-btn:active::before{opacity:.22;}
+    .calc-btn:hover{transform:scale(1.04);box-shadow:0 8px 24px #b4dafc;}
+    .result{margin-top:19px;font-size:1.19em;color:#388e3c;text-align:center;min-height:24px;}
+    /* Contact Page */
+    .contact-img{width:160px;margin-bottom:14px;border-radius:12px;box-shadow:0 2px 11px #dde5ed;display:block;margin-left:auto;margin-right:auto;}
+    /* Footer */
+    footer{
+      background:linear-gradient(90deg,var(--primary) 0%,var(--accent) 100%);
+      color:#fff;text-align:center;padding:22px 0;letter-spacing:1.2px;
+      border-radius:0 0 var(--radius) var(--radius);
+      font-family:var(--heading-font);font-size:1.04em;
+    }
+    /* Responsive */
+    @media(max-width:800px){
+      .page{padding:14px;}
+      .home-hero{flex-direction:column;align-items:center;}
+      .products-grid{flex-direction:column;gap:18px;}
+      .gallery-grid{flex-direction:column;gap:13px;}
+      .product-card,.gallery-grid img{width:100%;min-width:0;}
+      nav a{padding:14px 10vw;font-size:1em;}
+      .lang-switch{position:static;float:right;top:unset;right:unset;width:fit-content;margin:0 auto;}
+      header{text-align:center;position:relative;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="lang-switch">
+      <button class="lang-btn active" id="lang-en">EN</button>
+      <button class="lang-btn" id="lang-hi">हिन्दी</button>
+    </div>
+    <h1 data-en="Aluminium Fabrication & Installation" data-hi="एल्युमिनियम फैब्रिकेशन और इंस्टॉलेशन">Aluminium Fabrication & Installation</h1>
+    <p data-en="Doors • Windows • Wardrobes • Custom Projects" data-hi="दरवाजे • खिड़कियां • वार्डरोब • कस्टम प्रोजेक्ट्स">Doors • Windows • Wardrobes • Custom Projects</p>
+  </header>
+  <nav>
+    <a href="#home" class="active" data-en="Home" data-hi="होम">Home</a>
+    <a href="#products" data-en="Products" data-hi="उत्पाद">Products</a>
+    <a href="#gallery" data-en="Gallery" data-hi="गैलरी">Gallery</a>
+    <a href="#pricing" data-en="Pricing" data-hi="प्राइसिंग">Pricing</a>
+    <a href="#contact" data-en="Contact" data-hi="संपर्क">Contact</a>
+  </nav>
+  <main>
+    <div class="page active" id="page-home">
+      <div class="home-hero">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Aluminium Door">
+        <div>
+          <h2 data-en="Welcome" data-hi="स्वागत है">Welcome</h2>
+          <p class="home-descr" data-en="Your trusted partner for custom aluminium fabrication: doors, windows, wardrobes, partitions, and stunning bespoke interiors/exteriors. Choose your desired quality and get instant pricing. <b>Durability, aesthetics, and rapid installation.</b>" data-hi="कस्टम एल्युमिनियम फैब्रिकेशन के लिए आपका विश्वसनीय साथी: दरवाजे, खिड़कियां, वार्डरोब, पार्टिशन और शानदार इंटीरियर/एक्सटीरियर। अपनी पसंदीदा क्वालिटी चुनें और तत्काल मूल्य प्राप्त करें। <b>स्थायित्व, सुंदरता, और तेज इंस्टॉलेशन।</b>">
+            Your trusted partner for custom aluminium fabrication: doors, windows, wardrobes, partitions, and stunning bespoke interiors/exteriors. Choose your desired quality and get instant pricing. <b>Durability, aesthetics, and rapid installation.</b>
+          </p>
+          <div class="home-benefits">
+            <div class="benefit" data-en="✔ Durability" data-hi="✔ मजबूती">✔ Durability</div>
+            <div class="benefit" data-en="✔ Aesthetics" data-hi="✔ सुंदरता">✔ Aesthetics</div>
+            <div class="benefit" data-en="✔ Precision" data-hi="✔ सटीकता">✔ Precision</div>
+            <div class="benefit" data-en="✔ Fast Installation" data-hi="✔ तेज इंस्टॉलेशन">✔ Fast Installation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page" id="page-products">
+      <h2 data-en="Our Products" data-hi="हमारे उत्पाद">Our Products</h2>
+      <div class="products-grid">
+        <div class="product-card">
+          <span class="product-icon bi bi-windows"></span>
+          <div class="product-title" data-en="Windows" data-hi="खिड़कियां">Windows</div>
+          <div class="product-desc" data-en="Casement, sliding, elegant, custom" data-hi="कैसमेंट, स्लाइडिंग, सुंदर, कस्टम">Casement, sliding, elegant, custom</div>
+          <div class="subheading" data-en="Subtypes:" data-hi="उप-प्रकार:">Subtypes:</div>
+          <div class="subparts-box" data-en="2 Slides • 3 Slides" data-hi="2 स्लाइड्स • 3 स्लाइड्स">2 Slides • 3 Slides</div>
+        </div>
+        <div class="product-card">
+          <span class="product-icon bi bi-door-closed"></span>
+          <div class="product-title" data-en="Doors" data-hi="दरवाजे">Doors</div>
+          <div class="product-desc" data-en="Sliding, double, bi-fold, security" data-hi="स्लाइडिंग, डबल, बाय-फोल्ड, सुरक्षा">Sliding, double, bi-fold, security</div>
+          <div class="subheading" data-en="Subtypes:" data-hi="उप-प्रकार:">Subtypes:</div>
+          <div class="subparts-box" data-en="With Frame • Without Frame" data-hi="फ़्रेम के साथ • बिना फ़्रेम">With Frame • Without Frame</div>
+        </div>
+        <div class="product-card">
+          <span class="product-icon bi bi-box"></span>
+          <div class="product-title" data-en="Wardrobes" data-hi="वार्डरोब">Wardrobes</div>
+          <div class="product-desc" data-en="Sliding, hinged, custom designer" data-hi="स्लाइडिंग, हिंग्ड, कस्टम डिजाइन">Sliding, hinged, custom designer</div>
+        </div>
+        <div class="product-card">
+          <span class="product-icon bi bi-columns"></span>
+          <div class="product-title" data-en="Partitions / Others" data-hi="पार्टिशन / अन्य">Partitions / Others</div>
+          <div class="product-desc" data-en="Partitions, shelves, frames, specialty" data-hi="पार्टिशन, शेल्व्स, फ्रेम्स, विशेष">Partitions, shelves, frames, specialty</div>
+        </div>
+      </div>
+    </div>
+    <div class="page" id="page-gallery">
+      <h2 data-en="Gallery" data-hi="गैलरी">Gallery</h2>
+      <div class="gallery-grid">
+        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Finished Door">
+        <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=400&q=80" alt="Window Install">
+        <img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=400&q=80" alt="Wardrobe">
+        <img src="https://images.unsplash.com/photo-1533779181778-c71d8b2077b2?auto=format&fit=crop&w=400&q=80" alt="Partition">
+      </div>
+      <div class="center-text" style="margin-top:18px;color:#2252d1;">
+        <small data-en="— Real project photos. Replace images with your own for best impression! —" data-hi="— असली प्रोजेक्ट फोटो। बेहतर प्रभाव के लिए अपनी तस्वीरें अपलोड करें! —">— Real project photos. Replace images with your own for best impression! —</small>
+      </div>
+    </div>
+    <div class="page" id="page-pricing">
+      <h2 data-en="Pricing Calculator" data-hi="प्राइसिंग कैलकुलेटर">Pricing Calculator</h2>
+      <form id="calculator">
+        <label for="category" data-en="Select Product Category:" data-hi="उत्पाद श्रेणी चुनें:">Select Product Category:</label>
+        <select id="category" name="category">
+          <option value="door" data-en="Door" data-hi="दरवाजा">Door</option>
+          <option value="window" data-en="Window" data-hi="खिड़की">Window</option>
+          <option value="wardrobe" data-en="Wardrobe" data-hi="वार्डरोब">Wardrobe</option>
+          <option value="other" data-en="Other" data-hi="अन्य">Other</option>
+        </select>
+        <div class="subselect-wrap" id="door-subselect">
+          <label for="door-type" data-en="Door Subtype:" data-hi="दरवाजा उप-प्रकार:">Door Subtype:</label>
+          <select id="door-type" name="door-type">
+            <option value="with-frame" data-en="With Frame" data-hi="फ़्रेम के साथ">With Frame</option>
+            <option value="without-frame" data-en="Without Frame" data-hi="बिना फ़्रेम">Without Frame</option>
+          </select>
+        </div>
+        <div class="subselect-wrap" id="window-subselect">
+          <label for="window-type" data-en="Window Subtype:" data-hi="खिड़की उप-प्रकार:">Window Subtype:</label>
+          <select id="window-type" name="window-type">
+            <option value="2-slides" data-en="2 Slides" data-hi="2 स्लाइड्स">2 Slides</option>
+            <option value="3-slides" data-en="3 Slides" data-hi="3 स्लाइड्स">3 Slides</option>
+          </select>
+        </div>
+        <label for="gauge" data-en="Select Aluminium Gauge/Quality:" data-hi="एल्युमिनियम गेज/गुणवत्ता चुनें:">Select Aluminium Gauge/Quality:</label>
+        <select id="gauge" name="gauge">
+          <option value="standard" data-en="Standard (1.2mm)" data-hi="स्टैंडर्ड (1.2mm)">Standard (1.2mm)</option>
+          <option value="premium" data-en="Premium (1.5mm)" data-hi="प्रीमियम (1.5mm)">Premium (1.5mm)</option>
+          <option value="deluxe" data-en="Deluxe (2.0mm)" data-hi="डीलक्स (2.0mm)">Deluxe (2.0mm)</option>
+        </select>
+        <label for="area" data-en="Enter Area (in sq.ft):" data-hi="क्षेत्रफल दर्ज करें (स्क्वायर फीट में):">Enter Area (in sq.ft):</label>
+        <input type="number" id="area" name="area" min="1" step="any" placeholder="e.g. 20" required>
+        <button type="submit" class="calc-btn" data-en="Calculate Price" data-hi="मूल्य कैलकुलेट करें">Calculate Price</button>
+        <div class="result" id="priceResult"></div>
+      </form>
+      <div style="margin-top:16px;text-align:center;">
+        <small data-en="Actual price may vary based on hardware/design; this calculator gives basic material & installation price." data-hi="वास्तविक कीमत डिजाइन/हार्डवेयर के अनुसार बदल सकती है; यह कैलकुलेटर मूल सामग्री और इंस्टॉलेशन मूल्य देता है।">Actual price may vary based on hardware/design; this calculator gives basic material & installation price.</small>
+      </div>
+    </div>
+    <div class="page" id="page-contact">
+      <h2 data-en="Contact Us" data-hi="संपर्क करें">Contact Us</h2>
+      <img class="contact-img" src="https://images.unsplash.com/photo-1503676382389-79a5a3d9b6e1?auto=format&fit=crop&w=300&q=80" alt="Shop Front">
+      <div class="center-text" style="font-size:1.06em;">
+        <p>
+          <b data-en="Email:" data-hi="ईमेल:">Email:</b> <span data-en="info@aluminiumfabrication.com" data-hi="info@aluminiumfabrication.com">info@aluminiumfabrication.com</span><br>
+          <b data-en="Phone:" data-hi="फोन:">Phone:</b> <span data-en="+91-98765-43210" data-hi="+91-98765-43210">+91-98765-43210</span><br>
+          <b data-en="Location:" data-hi="स्थान:">Location:</b> <span data-en="123 Main Street, City Name, State" data-hi="123 मुख्य सड़क, शहर का नाम, राज्य">123 Main Street, City Name, State</span><br>
+          <b data-en="Open:" data-hi="खुला है:">Open:</b> <span data-en="Mon-Sat 9am-7pm" data-hi="सोम-शनिवार सुबह 9-शाम 7">Mon-Sat 9am-7pm</span>
+        </p>
+        <a href="mailto:info@aluminiumfabrication.com" style="background:var(--secondary);color:#fff;padding:11px 28px;border-radius:11px;font-family:var(--heading-font);font-weight:600;text-decoration:none;box-shadow:0 2px 12px #ff822e66;display:inline-block;margin-top:10px;" data-en="Email Us" data-hi="ईमेल करें">Email Us</a>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <span data-en="&copy; 2026 Aluminium Fabrication & Installation. All rights reserved." data-hi="&copy; 2026 एल्युमिनियम फैब्रिकेशन और इंस्टॉलेशन। सर्वाधिकार सुरक्षित।">&copy; 2026 Aluminium Fabrication & Installation. All rights reserved.</span>
+  </footer>
+  <script>
+    // SPA Navigation
+    const navLinks = document.querySelectorAll('nav a');
+    const pages = document.querySelectorAll('.page');
+    function showPage(hash) {
+      let found = false;
+      pages.forEach(p => {
+        if (hash === '#' + p.id.replace('page-', '')) {
+          p.classList.add('active'); found = true;
+        } else { p.classList.remove('active'); }
+      });
+      navLinks.forEach(a => {
+        if (a.getAttribute('href') === hash) a.classList.add('active');
+        else a.classList.remove('active');
+      });
+      // Default to home
+      if(!found){
+        document.getElementById('page-home').classList.add('active');
+        navLinks.forEach(a => a.classList.remove('active'));
+        navLinks[0].classList.add('active');
+      }
+    }
+    window.addEventListener('hashchange', () => showPage(window.location.hash));
+    navLinks.forEach(a => a.addEventListener('click', e => {
+      e.preventDefault();window.location.hash=a.getAttribute('href');
+    }));
+    showPage(window.location.hash);
+
+    // Pricing calculator
+    const priceMatrix = {
+      door: { with_frame: {standard:260,premium:310,deluxe:380},
+              without_frame: {standard:220,premium:270,deluxe:340}},
+      window: { "2-slides": {standard:200,premium:260,deluxe:320},
+                "3-slides": {standard:230,premium:290,deluxe:350}},
+      wardrobe: {standard:210,premium:275,deluxe:330},
+      other: {standard:180,premium:230,deluxe:300}
+    };
+    const categorySelect = document.getElementById('category');
+    const doorSubselect = document.getElementById('door-subselect');
+    const windowSubselect = document.getElementById('window-subselect');
+    function handleSubselect() {
+      doorSubselect.style.display = (categorySelect.value === 'door') ? 'block' : 'none';
+      windowSubselect.style.display = (categorySelect.value === 'window') ? 'block' : 'none';
+    }
+    categorySelect.addEventListener('change', handleSubselect);
+    handleSubselect();
+    document.getElementById('calculator').onsubmit = function(e) {
+      e.preventDefault();
+      const category = categorySelect.value;
+      const gauge = document.getElementById('gauge').value;
+      const area = parseFloat(document.getElementById('area').value);
+      let pricePerSqft, subtype;
+      if(category==='door'){
+        subtype=document.getElementById('door-type').value;
+        pricePerSqft=priceMatrix.door[subtype][gauge];
+      }else if(category==='window'){
+        subtype = document.getElementById('window-type').value;
+        pricePerSqft=priceMatrix.window[subtype][gauge];
+      }else{
+        pricePerSqft=priceMatrix[category][gauge];
+      }
+      if(!area||area<1){
+        document.getElementById('priceResult').textContent=document.getElementById('priceResult').getAttribute('data-error')||'Please enter a valid area.';
+        return;
+      }
+      const total = pricePerSqft * area;
+      document.getElementById('priceResult').textContent =
+        `Estimated Price: ₹${pricePerSqft} per sq.ft × ${area} = ₹${total.toFixed(2)}`;
+    };
+
+    // Language Switch (EN/HI)
+    const langBtns = [document.getElementById('lang-en'), document.getElementById('lang-hi')];
+    let currentLang = 'en';
+    function switchLang(lang) {
+      currentLang = lang;
+      langBtns.forEach(btn => btn.classList.remove('active'));
+      langBtns[lang==='en'?0:1].classList.add('active');
+      // All elements with data-en/data-hi switch
+      document.querySelectorAll('[data-en]').forEach(el=>{
+        el.innerHTML = el.getAttribute('data-'+lang);
+      });
+      document.querySelectorAll('[data-en][placeholder]').forEach(el=>{
+        el.placeholder = el.getAttribute('data-'+lang);
+      });
+      document.querySelectorAll('[data-en][value]').forEach(el=>{
+        el.value = el.getAttribute('data-'+lang);
+      });
+      document.title = document.getElementById('site-title').getAttribute('data-'+lang)||document.title;
+    }
+    langBtns.forEach(btn=>btn.addEventListener('click',()=>{
+      switchLang(btn.id==='lang-en'?'en':'hi');
+    }));
+    // Initial setup
+    switchLang(currentLang);
+  </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
   <title>Aluminium Fabrication & Installation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Fonts: Poppins (headings), Roboto (body) -->
