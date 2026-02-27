@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Aluminium Fabrication & Installation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f7f7f7; }
+    header { background: #1976d2; color: #fff; padding: 20px 0; text-align: center; }
+    nav { background: #333; margin-bottom: 30px; }
+    nav a { color: #fff; padding: 14px 18px; display:inline-block; text-decoration: none; }
+    nav a:hover { background: #1976d2; }
+    section { max-width: 800px; margin: 30px auto; background: #fff; padding: 24px; border-radius: 10px; box-shadow: 0 4px 20px #ddd; }
+    h2 { color: #1976d2; }
+    label { display:block; margin-top:12px; }
+    input, select { padding:8px; width:100%; margin-top:4px; margin-bottom:12px; border: 1px solid #ccc; border-radius: 4px; }
+    .result { margin-top: 16px; font-size: 1.3em; color: #388e3c; }
+    footer { background:#1976d2; color:#fff; text-align:center; padding:14px 0; margin-top:30px; }
+    .grid {display:flex; flex-wrap:wrap; gap:18px;}
+    .grid-item {flex:1 1 200px; background:#eee; padding:16px; border-radius:7px; text-align:center;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Aluminium Fabrication & Installation</h1>
+    <p>Doors &middot; Windows &middot; Wardrobes &middot; Custom Projects</p>
+  </header>
+  
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#products">Products</a>
+    <a href="#pricing">Pricing Calculator</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="home">
+    <h2>Welcome</h2>
+    <p>Your trusted partner for custom aluminium fabrication: doors, windows, wardrobes, and other interior/exterior solutions. Choose your desired quality and get instant pricing.</p>
+  </section>
+
+  <section id="products">
+    <h2>Our Products</h2>
+    <div class="grid">
+      <div class="grid-item"><strong>Doors</strong><br>Single/Double, Sliding, Bi-fold</div>
+      <div class="grid-item"><strong>Windows</strong><br>Casement, Sliding, Fixed, Custom</div>
+      <div class="grid-item"><strong>Wardrobes</strong><br>Sliding, Hinged, Custom design</div>
+      <div class="grid-item"><strong>Other</strong><br>Partitions, shelves, frames, and more</div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <h2>Pricing Calculator</h2>
+    <form id="calculator">
+      <label for="category">Select Product Category:</label>
+      <select id="category" name="category">
+        <option value="door">Door</option>
+        <option value="window">Window</option>
+        <option value="wardrobe">Wardrobe</option>
+        <option value="other">Other</option>
+      </select>
+      
+      <label for="gauge">Select Aluminium Gauge/Quality:</label>
+      <select id="gauge" name="gauge">
+        <option value="standard">Standard (1.2mm)</option>
+        <option value="premium">Premium (1.5mm)</option>
+        <option value="deluxe">Deluxe (2.0mm)</option>
+      </select>
+      
+      <label for="area">Enter Area (in sq.ft):</label>
+      <input type="number" id="area" name="area" min="1" step="any" placeholder="e.g. 20" required>
+      <button type="submit">Calculate Price</button>
+      <div class="result" id="priceResult"></div>
+    </form>
+    <small>Note: Actual prices may vary based on additional hardware/design; this calculator gives basic material & installation price.</small>
+  </section>
+  
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>
+      <strong>Email:</strong> info@aluminiumfabrication.com <br>
+      <strong>Phone:</strong> +91-98765-43210 <br>
+      <strong>Location:</strong> 123 Main Street, City Name, State
+    </p>
+  </section>
+  
+  <footer>
+    &copy; 2026 Aluminium Fabrication & Installation. All rights reserved.
+  </footer>
+  <script>
+    // Example prices per SQFT (customize as per your pricing)
+    const prices = {
+      door:    { standard: 240, premium: 310, deluxe: 380 },
+      window:  { standard: 200, premium: 260, deluxe: 320 },
+      wardrobe:{ standard: 220, premium: 280, deluxe: 340 },
+      other:   { standard: 180, premium: 230, deluxe: 300 }
+    };
+    document.getElementById('calculator').onsubmit = function(e) {
+      e.preventDefault();
+      const category = document.getElementById('category').value;
+      const gauge = document.getElementById('gauge').value;
+      const area = parseFloat(document.getElementById('area').value);
+      if (!area || area < 1) {
+        document.getElementById('priceResult').textContent = 'Please enter a valid area.';
+        return;
+      }
+      const pricePerSqft = prices[category][gauge];
+      const total = pricePerSqft * area;
+      document.getElementById('priceResult').textContent = 
+        `Estimated Price: ₹${pricePerSqft} per sq.ft × ${area} = ₹${total.toFixed(2)}`;
+    };
+  </script>
+</body>
+</html>
